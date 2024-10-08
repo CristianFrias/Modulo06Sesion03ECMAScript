@@ -1,45 +1,48 @@
 // REQUERIMIENTO 01
-// Ejercicio 8
-var numero = -8;
+// Crear tres variables, una con cada palabra clave: var, let, const; y construir una porción
+// de código donde la ejecución tenga un error por el alcance de cada una de éstas, ya sea
+// porque la definición es al interior de una función, de un bloque o fuera de ellos.
 
-// Caso de Error con Let
-// if (numero < 0) {
+// Ejercicio 8
+// var numero = -6;
+
+// Caso de Error con let
+// if(numero < 0) {
 //     let va = numero * -1
 // } else {
 //     let va = numero
 // }
 // console.log(va);
-// Fin de Error con Let
+// Fin de Error con let
 
-// Caso de Error con Const
-// if (numero < 0) {
+// Caso de Error con const
+// if(numero < 0) {
 //     const va = numero * -1
 // } else {
 //     const va = numero
 // }
 // console.log(va);
-// Fin de Error con Const
+// Fin de Error con const
 
-// Caso de Éxito con Var
-// console.log("Mostrar", va);
-// if (numero < 0) {
-//     var va = numero * -1
-// } else {
-//     var va = numero
-// }
-// console.log(va);
-// Fin de Éxito con Var
-
-// Caso de Éxito con Var
-// function valorAbsoluto(){
-//     if (numero < 0) {
+// Caso de Error con var
+// function valorAbsoluto() {
+//     if(numero < 0) {
 //         var va = numero * -1
 //     } else {
 //         var va = numero
 //     }
 // }
 // console.log("va", va);
-// Fin de Éxito con Var
+// Fin de Error con var
+
+// Caso de éxito con var
+// if(numero < 0) {
+//     var va = numero * -1
+// } else {
+//     var va = numero
+// }
+// console.log(va);
+// Fin de éxito con var
 
 
 // REQUERIMIENTO 02
@@ -49,28 +52,27 @@ var numero = -8;
 
 // Opción con formato tradicional
 // function mostrarPositivos(n1, n2) {
-//     if (n1 > 0 && n2 > 0) {
-//         return "Número01: "+n1+" Número02: "+n2;
+//     if(n1 > 0 && n2 > 0) {
+//         return "Número1: "+n1+" Número2: "+n2;
 //     } else {
 //         return "Ambos números deben ser positivos"
-//     }
+//     } 
 // }
 
-// Primera opción con formato flecha o Arrow Function
+// Opción con función flecha o Arrow Function
 // const mostrarPositivos = (n1, n2) => {
-//     if (n1 > 0 && n2 > 0) {
-//         return "Número01: "+n1+" Número02: "+n2;
+//     if(n1 > 0 && n2 > 0) {
+//         return "Número1: "+n1+" Número2: "+n2;
 //     } else {
 //         return "Ambos números deben ser positivos"
-//     }
+//     } 
 // }
 
-// Segunda opción con formato flecha o Arrow Function
-// const mostrarPositivos = (n1, n2) => (n1 > 0 && n2 > 0) ? "Número01: "+n1+" Número02: "+n2 : "Ambos números deben ser positivos"
-
-// let num01 = 6;
-// let num02 = 9;
-// console.log(mostrarPositivos(num01, num02))
+// Segunda Opción con función flecha o Arrow Function
+// const mostrarPositivos = (n1, n2) => (n1 > 0 && n2 > 0) ? "Número1: "+n1+" Número2: "+n2 : "Ambos números deben ser positivos"
+// let num1 = 6;
+// let num2 = 9;
+// console.log(mostrarPositivos(num1, num2))
 
 
 // REQUERIMIENTO 03
@@ -79,20 +81,89 @@ var numero = -8;
 // Utilizar template literals para escribir un texto empleando los valores del objeto, y
 // Destructuring para definir los valores del objeto dentro de la función.
 
-const datosAnimal = ({especie, raza, color}) => {
-    return {
-        especie,
-        raza,
+const datosAnimal = ({ especie, raza, color }) => {
+    return { 
+        especie, 
+        raza, 
         color,
-        descripcion: `Especie: ${especie}, Raza: ${raza}, Color; ${color}`
+        descripcion: `Especie: ${especie}, Raza: ${raza}, Color: ${color}`
     }
 }
 
 const animal = {
-    especie : "Perro",
-    raza : "Pastor Alemán",
-    color : "Negro",
-    anios : 2,
-    tamanio : "Grande"
+    especie: "Perro",
+    raza: "Pastor Aleman",
+    color: "Negro",
+    anios: 2,
+    tamanio: "Grande"
 }
+// console.log(datosAnimal(animal))
+
 console.log(datosAnimal(animal))
+
+
+// REQUERIMIENTO 04 
+// Tomar el objeto creado con anterioridad, y crear una copia actualizada usando el spread
+// operator; actualizar dos campos, y añadir dos nuevos 
+
+const datosAdicionales = {
+    vacunado: true,
+    entrenado: false,
+    color: "Marrón",
+    anios: 4
+}
+
+// Solución 1 Req4
+// const animalCopy = { ...animal, ...datosAdicionales }
+
+// Solución 2 Req4
+const animalCopy = {
+    ...animal,
+    vacunado: true,
+    entrenado: false,
+    color: "Marrón",
+    anios: 4
+}
+// console.log(animalCopy);
+
+// Ejemplo de clonación sin referencia
+// const animal2 = animal
+// const animal2 = JSON.parse(JSON.stringify(animal))
+const animal2 = { ...animal }
+animal2.anios = 4
+// console.log(animal);
+
+// Ejemplo Spread Operator con arrays
+const personas = ["José","María","Jesús"]
+const personas2 = [ ...personas ]
+personas2.push("Luis")
+// console.log(personas2);
+
+
+// REQUERIMIENTO 05
+// Obtener las propiedades del objeto en un Array, utilizando el método Object.values(), y
+// luego usar un ciclo for of para mostrar por pantalla todos los ítems del Array
+
+// console.log("Ciclo que muestra las llaves");
+// for (const key of Object.keys(animalCopy)) {
+//     console.log(key);
+// }
+
+// console.log("Ciclo que muestra los valores");
+// for (const valor of Object.values(animalCopy)) {
+//     console.log(valor);
+// }
+
+// console.log("Ciclo que muestra las llaves y sus valores");
+// for (const element of Object.entries(animalCopy)) {
+//     console.log(element);
+// }
+
+// console.log("Ciclo con for in");
+// for (const key in animalCopy) {
+//     console.log(key);
+// }
+
+console.log(animalCopy);
+const { tamanio, entrenado, ...result} = animalCopy
+console.log(result);
